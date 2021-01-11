@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <link rel="stylesheet" href="animate.css" />
+  <!-- <link rel="stylesheet" href="style.css" /> -->
+  <!-- <link rel="stylesheet" href="style111.css" /> -->
+
+  <style>
+  .top-content {
+    height: 1000px;
+    position: relative;
+  }
+  .animtext1 {
+    display: block;
+    position: relative;
+    height: 2000px;
+    text-align: center;
+  }
+  .animtext2 {
+    display: block;
+    position: relative;
+    height: 1500px;
+    text-align: center;
+  }
+  .animtext3 {
+    display: block;
+    position: relative;
+    height: 300px;
+    text-align: center;
+  }
+  .text {
+    visibility: hidden;
+    font-family: 'handwriting 4 by CA';
+  }
+  @font-face {
+    font-family: 'handwriting 4 by CA';
+    src: url('./fonts/handwriting 4 by CA.ttf')  format('truetype');
+  }
+  </style>
+
+</head>
+<body>
+
+  <div class="top-content"></div>
+  
+  <div class="animtext1">
+    <h1 class="text">Hello there!</h1>
+  </div>
+
+
+  <div class="animtext2">
+    <h1 class="text">Have a nice day!!</h1>
+  </div>
+
+  <div class="animtext3">
+    <h1 class="text">Good bye...</h1>
+  </div>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script> -->
+<!-- <script src="js/jquery.fittext.js"></script> -->
+<script src="js/jquery.lettering.js"></script>
+<!-- <script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script> -->
+<script src="js/jquery.textillate.js"></script>
+<!-- <script src="js/noframework.waypoints.min.js"></script> -->
+<script src="js/jquery.waypoints.min.js"></script>
+<!-- <script src="js/jquery.inview.min.js"></script> -->
+
+<script>
+
+  function textAnimation() {
+    $('.animate').textillate({
+        in: { effect: 'flipInX' },
+        out: { effect: 'foldUnfold', sync: true },
+        loop: false
+      });
+  }
+
+  $(document).ready(function(){
+    //set a waypoint for all the elements with same class on the page
+    var ppWaypoint = $('.text').waypoint(function(direction) {
+        //check the direction
+        if(direction == 'down') {
+            //add the class to start the animation
+            $(this.element).addClass('animate');
+            textAnimation();
+            //then destroy this waypoint, we don't need it anymore
+            this.destroy();
+        }
+    }, {
+        //Set the offset
+        offset: '75%'
+    });
+  });
+  
+
+</script>
+
+</body>
+</html>
